@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products | Reliable Digital</title>
+  
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="16x16" href="/Product-images/Reliable Logo 2025.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/Product-images/Reliable Logo 2025.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/Product-images/Reliable Logo 2025.svg">
+  <link rel="icon" type="image/x-icon" href="/Product-images/Reliable Logo.svg">
+  
+  <!-- Meta Description and Keywords -->
+  <meta name="description" content="Shop premium electronics and accessories at Reliable Digital. Find iPhones, headphones, and more.">
+  <meta name="keywords" content="electronics, fashion, home living, beauty, iPhones, headphones, gaming consoles, smartwatches, premium products">
+  
+  <!-- Existing Links and Scripts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <!-- Add AOS Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "rgb(0, 113, 227)",
+            secondary: "#f4f4f4",
+          },
+          borderRadius: {
+            none: "0px",
+            sm: "4px",
+            DEFAULT: "8px",
+            md: "12px",
+            lg: "16px",
+            xl: "20px",
+            "2xl": "24px",
+            "3xl": "32px",
+            full: "9999px",
+            button: "8px",
+          },
+        },
+      },
+    };
+  </script>
+    <style>
+      :where([class^="ri-"])::before {
+        content: "\f3c2";
+      }
+      .product-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+      }
+      .product-card:hover {
+        transform: translateY(-8px) scale(1.02); /* Enhanced hover effect */
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+      }
+      .toast {
+        animation: slideIn 0.3s ease forwards;
+      }
+      @keyframes slideIn {
+        from { transform: translateX(100%); }
+        to { transform: translateX(0); }
+      }
+      .hero {
+        background-image: url('Product-images/PHOTO-2024-04-09-15-44-58 2.jpg');
+        background-size: cover;
+        background-position: center;
+        border-radius: 12px;
+        background-attachment: fixed; /* Parallax effect */
+        position: relative;
+      }
+      .bg-black.bg-opacity-50 {
+        background-color: rgba(0, 0, 0, 0.66);
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+      .md:text-5xl { @media (min-width: 768px) { font-size: 3rem; line-height: 3.5rem; } }
+      .text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+      .md:text-xl { @media (min-width: 768px) { font-size: 1.25rem; line-height: 1.75rem; } }
+      .font-playfair { font-family: "Playfair Display", serif; }
+      .categories { background-color: #f4f4f4; border-radius: 12px; }
+      .grid-cols-5 { @media (min-width: 768px) { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+      .h-40 { height: 10rem; }
+      .category-card {
+        transition: box-shadow 0.3s ease, transform 0.3s ease;
+      }
+      .category-card:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        transform: scale(1.05); /* Subtle scale on hover */
+      }
+      .cursor-pointer { cursor: pointer; }
+      .testimonials { background-color: #f4f4f4; border-radius: 12px; }
+      .featured-deals { background-color: #cfa978; border-radius: 12px; }
+      .h-48 { height: 12rem; }
+      .hover:scale-105:hover { transform: scale(1.05); }
+      .animate-spin { animation: spin 1s linear infinite; }
+      @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      @keyframes modalFadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      @keyframes slideUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      #quickViewModal { animation: modalFadeIn 0.3s ease forwards; }
+      #quickViewModal .modal-content { animation: slideUp 0.3s ease forwards; }
+      .nav-link { transition: color 0.3s ease, transform 0.3s ease; }
+      .nav-link:hover { color: #cfa978; transform: translateY(-2px); } /* Hover lift */
+      .mobile-menu { transition: max-height 0.3s ease; }
+      /* Button Pulse Animation */
+      button.bg-primary, button.bg-white {
+        transition: all 0.3s ease;
+      }
+      button.bg-primary:hover, button.bg-white:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 12px rgba(0, 113, 227, 0.3);
+      }
+      .badge-pulse {
+        animation: pulse 1.5s infinite ease-in-out;
+      }
+      @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+      }
+      /* Scroll Fade Effect */
+      .fade-on-scroll { opacity: 0; transition: opacity 0.5s ease; }
+      .fade-on-scroll.visible { opacity: 1; }
+      /* Existing styles */
+.badge-animate { animation: bounce 2s infinite ease-in-out; }
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+/* Add this new class */
+.sticky-category {
+  position: sticky;
+  top: 64px;
+  z-index: 40;
+  background-color: #fff;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+    </style>
+
+<meta name="description" content="Discover premium products in electronics, fashion, home living, and beauty at Reliable Digital.">
+<meta name="keywords" content="electronics, fashion, home living, beauty, premium products">
+  </head>
+  <body class="bg-white min-h-screen">
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 bg-white shadow-sm z-50" data-aos="fade-down">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="flex items-center justify-between h-16">
+          <a href="#" class="font-['Open Sans'] text-4xl">
+            <span class="font-bold text-black">Reliable</span>
+            <span class="font-bold text-primary">Digital</span>
+          </a>              
+          <nav class="hidden md:flex space-x-8">
+            <a href="https://www.reliabledigitaloutlet.com/" class="nav-link text-gray-700">Home</a>
+            <a href="https://www.reliabledigitaloutlet.com/#about" class="nav-link text-gray-700">About</a>
+            <a href="https://www.reliabledigitaloutlet.com/#contact" class="nav-link text-gray-700">Find Us</a>
+          </nav>
+          <div class="md:hidden">
+            <button id="hamburger" class="text-gray-700 focus:outline-none">
+              <i class="ri-menu-line text-2xl"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="mobileMenu" class="md:hidden max-h-0 overflow-hidden mobile-menu bg-white shadow-sm">
+        <nav class="px-4 py-2 space-y-2">
+          <a href="https://www.reliabledigitaloutlet.com/" class="block text-gray-700">Home</a>
+          <a href="https://www.reliabledigitaloutlet.com/#about" class="block text-gray-700">About</a>
+          <a href="https://www.reliabledigitaloutlet.com/#contact" class="block text-gray-700">Find Us</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Shop by Category Slider -->
+    <section class="mt-20 max-w-7xl mx-auto px-4 sticky-category" data-aos="fade-up" data-aos-delay="100">
+        <h2 class="text-2xl font-bold mb-4">Shop by Brands</h2>
+        <div class="flex space-x-4 overflow-x-auto pb-2">
+          <button class="px-4 py-2 border border-gray-200 rounded-full whitespace-nowrap category-slider ripple custom-cursor" data-category="All" aria-label="Filter by All">All</button>
+          <button class="px-4 py-2 border border-gray-200 rounded-full whitespace-nowrap category-slider ripple custom-cursor" data-category="APPLE" aria-label="Filter by APPLE">Apple</button>
+          <button class="px-4 py-2 border border-gray-200 rounded-full whitespace-nowrap category-slider ripple custom-cursor" data-category="SONY" aria-label="Filter by SONY">Sony</button>
+          <button class="px-4 py-2 border border-gray-200 rounded-full whitespace-nowrap category-slider ripple custom-cursor" data-category="JBL" aria-label="Filter by JBL">JBL</button>
+          <button class="px-4 py-2 border border-gray-200 rounded-full whitespace-nowrap category-slider ripple custom-cursor" data-category="DYSON" aria-label="Filter by DYSON">Dyson</button>
+          <button class="px-4 py-2 border border-gray-200 rounded-full whitespace-nowrap category-slider ripple custom-cursor" data-category="BEATS" aria-label="Filter by BEATS">Beats</button>
+          <button class="px-4 py-2 border border-gray-200 rounded-full whitespace-nowrap category-slider ripple custom-cursor" data-category="DJI" aria-label="Filter by DJI">DJI</button>
+          <button class="px-4 py-2 border border-gray-200 rounded-full whitespace-nowrap category-slider ripple custom-cursor" data-category="META" aria-label="Filter by META">Meta</button>
+          <button class="px-4 py-2 border border-gray-200 rounded-full whitespace-nowrap category-slider ripple custom-cursor" data-category="Nintendo" aria-label="Filter by NINTENDO">Nintendo</button>
+        </div>
+      </section>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 pt-8 pb-16">
+      <!-- Hero Section -->
+      <div class="hero bg-cover bg-center text-white py-16 rounded-lg mb-12" data-aos="zoom-in">
+        <div class="max-w-7xl mx-auto px-4 text-center bg-black bg-opacity-50 rounded-lg p-4">
+          <h1 class="text-4xl md:text-5xl font-playfair font-bold mb-4">Your Digital Hub</h1>
+          <p class="text-lg md:text-xl mb-6">iPhones, headphones, gaming consoles, smartwatches, accessories – we’ve got you covered.</p>
+          <button class="bg-white text-primary px-6 py-3 rounded-button font-semibold hover:bg-opacity-90 transition-colors whitespace-nowrap" onclick="showToast('Explore our products now!')">
+            Shop Now
+          </button>
+        </div>
+      </div>
+
+      <!-- Filters and Search -->
+      <div class="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-4 mb-8" data-aos="fade-up" data-aos-delay="200">
+        <div class="relative w-full md:w-64">
+          <input id="searchInput" type="text" placeholder="Search products..." class="w-full px-4 py-2 pl-10 bg-white border border-gray-200 rounded-button focus:outline-none focus:border-primary transition-colors" />
+          <i class="ri-search-line absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+        </div>
+        <select id="priceRangeSelect" class="w-full md:w-auto border border-gray-200 rounded-button px-3 py-2 focus:outline-none focus:border-primary">
+          <option value="">All Prices</option>
+          <option value="under500">Under AED 500</option>
+          <option value="500to2000">AED 500 - AED 2000</option>
+          <option value="2000to5000">AED 2000 - AED 5000</option>
+          <option value="over5000">Over AED 5000</option>
+        </select>
+        <select id="sortSelect" class="w-full md:w-auto border border-gray-200 rounded-button px-3 py-2 focus:outline-none focus:border-primary">
+          <option value="">Sort By</option>
+          <option value="priceAsc">Price: Low to High</option>
+          <option value="priceDesc">Price: High to Low</option>
+          <option value="rating">Rating</option>
+        </select>
+      </div>
+
+      <!-- Product Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="productGrid" data-aos="fade-up" data-aos-delay="300">
+        <!-- Products are rendered here -->
+      </div>
+
+      <!-- Testimonials Section -->
+      <div class="testimonials bg-gray-100 py-12 rounded-lg mt-12 fade-on-scroll" data-aos="fade-up" data-aos-delay="400">
+        <div class="max-w-7xl mx-auto px-4">
+          <h2 class="font-playfair text-3xl font-bold text-center mb-8">What Our Customers Say</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow" data-aos="flip-left" data-aos-delay="500">
+              <div class="flex items-center mb-4">
+                <i class="ri-star-fill text-yellow-400"></i>
+                <i class="ri-star-fill text-yellow-400"></i>
+                <i class="ri-star-fill text-yellow-400"></i>
+                <i class="ri-star-fill text-yellow-400"></i>
+                <i class="ri-star-fill text-yellow-400"></i>
+              </div>
+              <p class="text-gray-600 mb-4">"Fast delivery and top-quality gadgets. Will buy again!"</p>
+              <p class="font-semibold text-gray-900">Ahmed R., Dubai</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow" data-aos="flip-left" data-aos-delay="600">
+              <div class="flex items-center mb-4">
+                <i class="ri-star-fill text-yellow-400"></i>
+                <i class="ri-star-fill text-yellow-400"></i>
+                <i class="ri-star-fill text-yellow-400"></i>
+                <i class="ri-star-fill text-yellow-400"></i>
+                <i class="ri-star-half-fill text-yellow-400"></i>
+              </div>
+              <p class="text-gray-600 mb-4">"Great customer support! They actually respond, unlike some other places. 😆"</p>
+              <p class="font-semibold text-gray-900">Faisal T., Dubai</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow" data-aos="flip-left" data-aos-delay="700">
+              <div class="flex items-center mb-4">
+                <i class="ri-star-fill text-yellow-400"></i>
+                <i class="ri-star-fill text-yellow-400"></i>
+                <i class="ri-star-fill text-yellow-400"></i>
+                <i class="ri-star-fill text-yellow-400"></i>
+                <i class="ri-star-line text-yellow-400"></i>
+              </div>
+              <p class="text-gray-600 mb-4">"Ordered a gaming console, and it's fantastic! Great deals here."</p>
+              <p class="font-semibold text-gray-900">Layla M., Abu Dhabi</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Featured Deals Section -->
+<div class="featured-deals bg-primary text-white py-12 rounded-lg mt-12 fade-on-scroll" data-aos="fade-up" data-aos-delay="800">
+  <div class="max-w-7xl mx-auto px-4">
+    <h2 class="font-playfair text-3xl font-bold text-center mb-8">Featured Deals</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Deal 1 -->
+      <div class="bg-white text-gray-900 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow" data-aos="zoom-in" data-aos-delay="900">
+        <img src="Product-images/Iphone 16 Pro Max.svg" alt="Iphone 16 Pro Max" class="w-full h-48 object-cover" />
+        <div class="p-4">
+          <h3 class="font-semibold text-lg mb-2">Iphone 16 Pro Max</h3>
+          <div class="flex items-center mb-2">
+            <i class="ri-star-fill text-yellow-400"></i>
+            <i class="ri-star-fill text-yellow-400"></i>
+            <i class="ri-star-fill text-yellow-400"></i>
+            <i class="ri-star-fill text-yellow-400"></i>
+            <i class="ri-star-half-fill text-yellow-400"></i>
+            <span class="ml-1 text-sm text-gray-500">(4.8)</span>
+          </div>
+          <p class="text-sm text-gray-600 line-through">AED 5099.99</p>
+          <p class="text-lg font-bold">AED 4895.00</p>
+          <p class="text-sm text-red-500 mb-2">Ends in <span id="countdown1">24:00:00</span></p>
+          <button class="mt-2 bg-primary text-white px-4 py-2 rounded-button hover:bg-opacity-90 transition-colors whitespace-nowrap" onclick="showToast('Deal added to inquiry!')">
+            Inquire Now
+          </button>
+        </div>
+      </div>
+      <!-- Deal 2 -->
+      <div class="bg-white text-gray-900 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow" data-aos="zoom-in" data-aos-delay="1000">
+        <img src="img/Playstation.png" alt="Sony PlayStation-5 PRO" class="w-full h-48 object-cover" />
+        <div class="p-4">
+          <h3 class="font-semibold text-lg mb-2">Sony PlayStation-5 PRO</h3>
+          <div class="flex items-center mb-2">
+            <i class="ri-star-fill text-yellow-400"></i>
+            <i class="ri-star-fill text-yellow-400"></i>
+            <i class="ri-star-fill text-yellow-400"></i>
+            <i class="ri-star-fill text-yellow-400"></i>
+            <i class="ri-star-line text-yellow-400"></i>
+            <span class="ml-1 text-sm text-gray-500">(4.7)</span>
+          </div>
+          <p class="text-sm text-gray-600 line-through">AED 3520.00</p>
+          <p class="text-lg font-bold">AED 3094.99</p>
+          <p class="text-sm text-red-500 mb-2">Ends in <span id="countdown2">24:00:00</span></p>
+          <button class="mt-2 bg-primary text-white px-4 py-2 rounded-button hover:bg-opacity-90 transition-colors whitespace-nowrap" onclick="showToast('Deal added to inquiry!')">
+            Inquire Now
+          </button>
+        </div>
+      </div>
+      <!-- Deal 3 -->
+      <div class="bg-white text-gray-900 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow" data-aos="zoom-in" data-aos-delay="1100">
+        <img src="Product-images/Apple Vision Pro.svg" alt="Apple Vision Pro" class="w-full h-48 object-cover" />
+        <div class="p-4">
+          <h3 class="font-semibold text-lg mb-2">Apple Vision Pro</h3>
+          <div class="flex items-center mb-2">
+            <i class="ri-star-fill text-yellow-400"></i>
+            <i class="ri-star-fill text-yellow-400"></i>
+            <i class="ri-star-fill text-yellow-400"></i>
+            <i class="ri-star-fill text-yellow-400"></i>
+            <i class="ri-star-half-fill text-yellow-400"></i>
+            <span class="ml-1 text-sm text-gray-500">(4.9)</span>
+          </div>
+          <p class="text-sm text-gray-600 line-through">AED 21999.99</p>
+          <p class="text-lg font-bold">AED 13999.99</p>
+          <p class="text-sm text-red-500 mb-2">Ends in <span id="countdown3">24:00:00</span></p>
+          <button class="mt-2 bg-primary text-white px-4 py-2 rounded-button hover:bg-opacity-90 transition-colors whitespace-nowrap" onclick="showToast('Deal added to inquiry!')">
+            Inquire Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>  
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-8 mt-12 fade-on-scroll" data-aos="fade-up" data-aos-delay="1200">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <h3 class="font-semibold text-white mb-4">Reliable Digital</h3>
+            <p class="text-sm">Your one-stop shop for premium products in electronics, fashion, home living, and beauty.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-white mb-4">Quick Links</h3>
+            <ul class="space-y-2">
+              <li><a href="#" class="hover:text-white transition-colors">Home</a></li>
+              <li><a href="https://www.reliabledigitaloutlet.com/T&C.html" class="hover:text-white transition-colors">Terms And Conditions</a></li>
+              <li><a href="https://api.whatsapp.com/send/?phone=971523349786&text&type=phone_number&app_absent=0" class="hover:text-white transition-colors">Chat With Us</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-semibold text-white mb-4">Contact Us</h3>
+            <p class="text-sm">Email: amdin@reliabledigitaloutlet.com</p>
+            <p class="text-sm">Phone: +971-52-334-9786</p>
+            <p class="text-sm">
+              ---------------------------------------------
+              Reliable Digital General Trading L.L.C
+              Dubai Outlet Mall, Madinat Hind - 1, Alain Rd</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-white mb-4">Follow Us</h3>
+            <div class="flex space-x-4">
+              <a href="https://www.facebook.com/relaibledigital/" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-primary transition-colors">
+                <i class="ri-facebook-fill"></i>
+              </a>
+              <a href="https://www.instagram.com/reliabledigitaldubai?igsh=MTM4MjB3cGQxcWw0Zw%3D%3D&utm_source=qr" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-primary transition-colors">
+                <i class="ri-instagram-fill"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <p class="text-center mt-6 text-sm">© 2025 Reliable Digital. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed top-4 right-4 bg-white shadow-lg rounded-lg p-4 hidden z-50">
+      <div class="flex items-center">
+        <i class="ri-checkbox-circle-line text-green-500 text-xl mr-2"></i>
+        <span id="toastMessage"></span>
+      </div>
+    </div>
+
+    <!-- Newsletter Modal -->
+    <div id="newsletterModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+      <div class="bg-white rounded-lg p-6 w-full max-w-md">
+        <h2 class="font-playfair text-2xl font-bold mb-4">Join Our Newsletter</h2>
+        <p class="text-gray-600 mb-4">Stay updated with our latest products, deals, and news. Get 10% off your first purchase!</p>
+        <form id="newsletterForm" class="space-y-4">
+          <input type="email" placeholder="Enter your email" class="w-full px-4 py-2 border border-gray-200 rounded-button focus:outline-none focus:border-primary" required />
+          <button type="submit" class="w-full bg-primary text-white px-4 py-2 rounded-button hover:bg-opacity-90 transition-colors whitespace-nowrap">
+            Subscribe
+          </button>
+        </form>
+        <button class="mt-4 text-gray-500 hover:text-gray-700" onclick="closeModal()">Close</button>
+      </div>
+    </div>
+
+    <!-- Quick View Modal -->
+    <div id="quickViewModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden modal-overlay">
+      <div class="bg-white rounded-lg w-11/12 md:w-2/3 lg:w-1/2 p-6 relative modal-content">
+        <button class="absolute top-4 right-4 text-gray-600 hover:text-primary" onclick="closeQuickView()">
+          <i class="ri-close-line text-2xl"></i>
+        </button>
+        <div class="flex flex-col md:flex-row">
+          <div class="md:w-1/2">
+            <img id="modalImage" src="" alt="" class="w-full h-64 object-cover rounded-lg" />
+          </div>
+          <div class="md:w-1/2 md:pl-6 mt-4 md:mt-0">
+            <h2 id="modalName" class="text-2xl font-bold mb-2"></h2>
+            <div id="modalRating" class="flex items-center mb-2"></div>
+            <div id="modalPrice" class="text-xl font-semibold text-primary mb-4"></div>
+            <p id="modalDescription" class="text-gray-700 mb-4"></p>
+            <a id="modalWhatsApp" href="#" target="_blank" class="inline-block px-4 py-2 bg-primary text-white rounded-button hover:bg-opacity-90 transition-colors">
+              Contact via WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add AOS Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      // Replace with your WhatsApp number
+      const whatsappNumber = "+971523349786";
+
+      // Updated sample products based on image attachment descriptions
+      const products = [
+    { id: 1, name: "DYSON AIRSTRAIT HAIR STRAIGHTENER", category: "DYSON", price: 2195, originalPrice: 2399.99, rating: 4.7, image: "Product-images/dyson airstrait hair straightener.svg", badge: "New", description: "Experience cutting-edge performance with this product." },
+    { id: 2, name: "IPHONE 16 PRO MAX 256GB", category: "APPLE", price: 4699.99, originalPrice: 5099.99, rating: 4.8, image: "Product-images/Iphone 16 Pro Max.svg", badge: "Premium", description: "Designed for efficiency and reliability." },
+    { id: 3, name: "APPLE WATCH SERIES 10 42MM", category: "APPLE", price: 1525, originalPrice: 1795, rating: 4.6, image: "Product-images/APPLE WATCH SERIES 10 42MM.svg", badge: "Best Seller", description: "A top choice for discerning customers." },
+    { id: 4, name: "JBL BOOMBOX 3 BLUETOOTH SPEAKER", category: "JBL", price: 1799.99, originalPrice: 1895, rating: 4.8, image: "Product-images/JBL BOOMBOX 3 BLUETOOTH SPEAKER.svg", badge: "Sale", description: "Built to deliver exceptional quality." },
+    { id: 5, name: "LEPRESSO DIGITAL DRIP COFFEE MACHINE WITH SMAR", category: "LEPRESSO", price: 225, originalPrice: 390, rating: 4.5, image: "Product-images/LEPRESSO DIGITAL DRIP COFFEE MACHINE WITH SMAR.svg", badge: "Hot", description: "Innovative design meets superior performance." },
+    { id: 6, name: "TEFAL AIR FRYER EY801D27", category: "TEFAL", price: 645, originalPrice: 699, rating: 4.7, image: "Product-images/TEFAL AIR FRYER EY801D27.svg", badge: "New", description: "A reliable and stylish choice for everyday use." },
+    { id: 7, name: "BRAUN SHAVER SERIES 9 PRO 9577CC", category: "BRAUN", price: 1699, originalPrice: 1899, rating: 4.6, image: "Product-images/BRAUN SHAVER SERIES 9 PRO 9577CC.svg", badge: "Top Rated", description: "Crafted with attention to detail." },
+    { id: 8, name: "MOSER CHROMINI PRO TRIMMER", category: "MOSER", price: 445, originalPrice: 495, rating: 4.5, image: "Product-images/MOSER CHROMINI PRO TRIMMER .svg", badge: "Premium", description: "Experience cutting-edge performance with this product." },
+    { id: 9, name: "VERTEX BB-8 WIRELESS GAMING HEADPHONE", category: "VERTEX", price: 349, originalPrice: 549, rating: 4.7, image: "Product-images/VERTEX BB-8 WIRELESS GAMING HEADPHONE.svg", badge: "Best Seller", description: "Designed for efficiency and reliability." },
+    { id: 10, name: "HYPERX CLOUD STINGER WIRED GAMING HEADPHONE", category: "HYPERX", price: 325, originalPrice: 595, rating: 4.5, image: "Product-images/HYPERX CLOUD STINGER WIRED GAMING HEADPHONE.svg  ", badge: "New", description: "A top choice for discerning customers." },
+    { id: 11, name: "HYPERX CLOUD III GAMING HEADPHONE", category: "HYPERX", price: 545, originalPrice: 795, rating: 4.8, image: "Product-images/HYPERX CLOUD III GAMING HEADPHONE.svg", badge: "Sale", description: "Built to deliver exceptional quality." },
+    { id: 12, name: "ASTRO A30 WIRELESS GAMING HEADPHONE", category: "ASTRO", price: 1099, originalPrice: 1399, rating: 4.7, image: "Product-images/ASTRO A30 WIRELESS GAMING HEADPHONE.svg", badge: "Hot", description: "Innovative design meets superior performance." },
+    { id: 13, name: "LOGITECH GAMING HEADPHONE G432", category: "LOGITECH", price: 395, originalPrice: 595, rating: 4.6, image: "Product-images/LOGITECH GAMING HEADPHONE G432.svg", badge: "New", description: "A reliable and stylish choice for everyday use." },
+    { id: 14, name: "META QUEST 3 512GB VR", category: "META", price: 2499, originalPrice: 2799, rating: 4.8, image: "Product-images/META QUEST 3 512GB VR.svg", badge: "Premium", description: "Crafted with attention to detail." },
+    { id: 15, name: "PLAYSTATION-4 SLIM CONSOLE 1TB", category: "SONY", price: 1399, originalPrice: 1895, rating: 4.7, image: "Product-images/PLAYSTATION-4 SLIM CONSOLE 1TB.svg", badge: "Top Rated", description: "Experience cutting-edge performance with this product." },
+    { id: 16, name: "PLAYSTATION-5 SLIM DIGITAL 1TB", category: "SONY", price: 1799, originalPrice: 2099, rating: 4.8, image: "Product-images/PLAYSTATION-5 SLIM DIGITAL 1TB.svg", badge: "Best Seller", description: "Designed for efficiency and reliability." },
+    { id: 17, name: "OCULUS META QUEST 3S 256GB", category: "META", price: 2099.99, originalPrice: 2499.99, rating: 4.5, image: "Product-images/OCULUS META QUEST 3S 256GB.svg", badge: "Sale", description: "A top choice for discerning customers." },
+    { id: 18, name: "PLAYSTATION-5 DISK VERSION CD 1 TB CONSOLE", category: "SONY", price: 2099.99, originalPrice: 2499.99, rating: 4.8, image: "Product-images/PLAYSTATION-5 DISK VERSION CD 1 TB CONSOLE.svg", badge: "New", description: "Built to deliver exceptional quality." },
+    { id: 19, name: "LOGITECH G29 RACING WHEEL WHITE", category: "LOGITECH", price: 1099.99, originalPrice: 1499, rating: 4.7, image: "Product-images/LOGITECH G29 RACING WHEEL WHITE.svg", badge: "Hot", description: "Innovative design meets superior performance." },
+    { id: 20, name: "PS-5 CONTROLLER CHROME PEARL", category: "SONY", price: 359.99, originalPrice: 389, rating: 4.6, image: "Product-images/PS-5 CONTROLLER CHROME PEARL.svg", badge: "Top Rated", description: "A reliable and stylish choice for everyday use." },
+    { id: 21, name: "PS-4 CONTROLLER BLACK/WHITE", category: "SONY", price: 349.99, originalPrice: 369.99, rating: 4.5, image: "Product-images/PS-4 CONTROLLER BLACKWHITE.svg", badge: "Premium", description: "Experience cutting-edge performance with this product." },
+    { id: 22, name: "PS-5 PULSE 3D WIRELESS HEADPHONE", category: "SONY", price: 399.99, originalPrice: 449, rating: 4.8, image: "Product-images/PS-5 PULSE 3D WIRELESS HEADPHONE.svg", badge: "Sale", description: "Designed for efficiency and reliability." },
+    { id: 23, name: "PS-5 PULSE ELITE WIRELESS HEADPHONE", category: "SONY", price: 649.99, originalPrice: 749.99, rating: 4.7, image: "Product-images/PS-5 PULSE ELITE WIRELESS HEADPHONE.svg", badge: "New", description: "A top choice for discerning customers." },
+    { id: 24, name: "PS-5 VR2", category: "SONY", price: 2149.99, originalPrice: 2599, rating: 4.8, image: "Product-images/PS-5 VR 2.svg", badge: "Hot", description: "Built to deliver exceptional quality." },
+    { id: 25, name: "PS-5 EARBUDS PULSE EXPLORE", category: "SONY", price: 849.99, originalPrice: 999.99, rating: 4.5, image: "Product-images/PS-5 EARBUDS PULSE EXPLORE.svg", badge: "Top Rated", description: "Innovative design meets superior performance." },
+    { id: 26, name: "NINTENDO SWITCH OLED CONSOLE", category: "NINTENDO", price: 1195, originalPrice: 1799.99, rating: 4.7, image: "Product-images/NINTENDO SWTICH OLED CONSOLE.svg", badge: "New", description: "A reliable and stylish choice for everyday use." },
+    { id: 27, name: "NINTENDO SWITCH OLED CONSOLE ZELDA EDITION", category: "NINTENDO", price: 1299, originalPrice: 2099.99, rating: 4.8, image: "Product-images/NINTENDO SWITCH OLED CONSOLE ZELDA EDITION.svg", badge: "Sale", description: "Experience cutting-edge performance with this product." },
+    { id: 28, name: "XBOX WIRELESS HEADPHONE", category: "XBOX", price: 545, originalPrice: 599.99, rating: 4.6, image: "Product-images/XBOX WIRELESS HEADPHON.svg", badge: "Best Seller", description: "Designed for efficiency and reliability." },
+    { id: 29, name: "XBOX ONE CONTROLLER GREEN", category: "XBOX", price: 299.99, originalPrice: 319.99, rating: 4.5, image: "Product-images/XBOX ONE CONTROLLER GREEN.svg", badge: "Premium", description: "A top choice for discerning customers." },
+    { id: 30, name: "MARSHALL MAJOR V", category: "MARSHALL", price: 699.99, originalPrice: 720, rating: 4.7, image: "Product-images/MARSHALL MAJOR V.svg", badge: "New", description: "Built to deliver exceptional quality." },
+    { id: 31, name: "MARSHALL EMBERTON III BT SPEAKER", category: "MARSHALL", price: 849.99, originalPrice: 999, rating: 4.8, image: "Product-images/MARSHALL EMBERTON III BT SPEAKER.svg", badge: "Hot", description: "Innovative design meets superior performance." },
+    { id: 32, name: "BEATS STUDIO PRO WIRELESS HEADPHONE", category: "BEATS", price: 1349.99, originalPrice: 1500, rating: 4.7, image: "Product-images/BEATS STUDIO PRO WIRELESS HEADPHONE.svg", badge: "Top Rated", description: "Experience cutting-edge performance with this product." },
+    { id: 33, name: "BEATS SOLO 4 WIRELESS HEADPHONE", category: "BEATS", price: 799.99, originalPrice: 875.99, rating: 4.6, image: "Product-images/BEATS SOLO 4 WIRELESS HEADPHONE.svg", badge: "New", description: "Designed for efficiency and reliability." },
+    { id: 34, name: "SONY WIRELESS HEADPHONE WH-1000XM5", category: "SONY", price: 1449.99, originalPrice: 1799.99, rating: 4.8, image: "Product-images/SONY WIRELESS HEADPHONE WH-1000XM5.svg", badge: "Premium", description: "A top choice for discerning customers." },
+    { id: 35, name: "APPLE AIRPODS MAX-2", category: "APPLE", price: 2099.99, originalPrice: 2699, rating: 4.7, image: "Product-images/APPLE AIRPODS MAX-2 .svg", badge: "Sale", description: "Built to deliver exceptional quality." },
+    { id: 36, name: "JBL LIVE 770 NC BT HEADPHONE", category: "JBL", price: 599.99, originalPrice: 649, rating: 4.5, image: "Product-images/JBL LIVE 770 NC BT HEADPHONE.svg", badge: "Hot", description: "Innovative design meets superior performance." },
+    { id: 37, name: "JBL CHARGE 5 BLUETOOTH SPEAKER", category: "JBL", price: 595, originalPrice: 699.99, rating: 4.6, image: "Product-images/JBL CHARGE 5 BLUETOOTH SPEAKER.svg", badge: "Top Rated", description: "A reliable and stylish choice for everyday use." },
+    { id: 38, name: "JBL FLIP 6", category: "JBL", price: 395, originalPrice: 475, rating: 4.7, image: "Product-images/JBL FLIP 6.svg", badge: "New", description: "Experience cutting-edge performance with this product." },
+    { id: 39, name: "GALAXY BUDS-2 PRO", category: "SAMSUNG", price: 499.99, originalPrice: 549.99, rating: 4.8, image: "Product-images/GALAXY BUDS-2 PRO.svg", badge: "Sale", description: "Designed for efficiency and reliability." },
+    { id: 40, name: "APPLE AIRPODS-2 WITH CHARGING CASE", category: "APPLE", price: 545.45, originalPrice: 695.99, rating: 4.5, image: "Product-images/APPLE AIRPODS-2 WITH CHARGING CASE.svg", badge: "Best Seller", description: "A top choice for discerning customers." },
+    { id: 41, name: "APPLE AIRPODS-4TH GEN", category: "APPLE", price: 599.95, originalPrice: 795.45, rating: 4.7, image: "Product-images/APPLE AIRPODS-4TH GEN.svg", badge: "Premium", description: "Built to deliver exceptional quality." },
+    { id: 42, name: "APPLE AIRPODS-4 ANC WIRELESS", category: "APPLE", price: 799.99, originalPrice: 959.99, rating: 4.8, image: "Product-images/APPLE AIRPODS-4 ANC WIRELESS.svg", badge: "New", description: "Innovative design meets superior performance." },
+    { id: 43, name: "APPLE AIRPODS PRO 2ND GENERATION", category: "APPLE", price: 949.99, originalPrice: 1099, rating: 4.7, image: "Product-images/APPLE AIRPODS PRO 2ND GENERATION.svg", badge: "Hot", description: "A reliable and stylish choice for everyday use." },
+    { id: 44, name: "APPLE WATCH SE-40MM", category: "APPLE", price: 999.99, originalPrice: 1299, rating: 4.6, image: "Product-images/APPLE WATCH SE-2 40MM.svg", badge: "Top Rated", description: "Experience cutting-edge performance with this product." },
+    { id: 45, name: "IPHONE 16 PRO 256GB", category: "APPLE", price: 4399.99, originalPrice: 4699.99, rating: 4.8, image: "Product-images/IPHONE 16 PRO 256GB.svg", badge: "Sale", description: "Designed for efficiency and reliability." },
+    { id: 46, name: "IPHONE 16 256GB", category: "APPLE", price: 3799.99, originalPrice: 3999.99, rating: 4.7, image: "Product-images/IPHONE 16 128GB.svg", badge: "New", description: "A top choice for discerning customers." },
+    { id: 47, name: "IPHONE 15 PRO MAX 512GB", category: "APPLE", price: 5399.99, originalPrice: 5949, rating: 4.8, image: "Product-images/IPHONE 15 PRO MAX 512GB.svg", badge: "Premium", description: "Built to deliver exceptional quality." },
+    { id: 48, name: "IPAD 9TH GEN 256GB WIFI", category: "APPLE", price: 1745.99, originalPrice: 1999, rating: 4.5, image: "Product-images/IPAD 9TH GEN 256GB WIFI.svg", badge: "Hot", description: "Innovative design meets superior performance." },
+    { id: 49, name: "IPAD 10TH GEN 256GB WIFI", category: "APPLE", price: 2099, originalPrice: 2199, rating: 4.6, image: "Product-images/IPAD 10TH GEN 256GB WIFI.svg", badge: "Top Rated", description: "A reliable and stylish choice for everyday use." },
+    { id: 50, name: "IPHONE 16 128GB BLACK", category: "APPLE", price: 3399, originalPrice: 3599.99, rating: 4.7, image: "Product-images/IPHONE 16 256GB.svg", badge: "New", description: "Experience cutting-edge performance with this product." },
+    { id: 51, name: "DJI OSMO MOBILE 6", category: "DJI", price: 599, originalPrice: 799, rating: 4.8, image: "Product-images/DJI OSMO MOBILE 6.svg", badge: "Sale", description: "Designed for efficiency and reliability." },
+    { id: 52, name: "ZHIYUN SMOOTH Q3 GIMBAL COMBO", category: "ZHIYUN", price: 465, originalPrice: 495.45, rating: 4.7, image: "Product-images/ZHIYUN SMOOTH Q3 GIMBAL COMBO.svg", badge: "Hot", description: "A top choice for discerning customers." },
+    { id: 53, name: "JBL PARTYBOX STAGE 320 SPEAKER", category: "JBL", price: 2200, originalPrice: 2399, rating: 4.8, image: "Product-images/JBL PARTYBOX STAGE 320 SPEAKER.svg", badge: "Premium", description: "Built to deliver exceptional quality." },
+    { id: 54, name: "DYSON V8 ABSOLUTE VACUUM CLEANER", category: "DYSON", price: 1099, originalPrice: 1399, rating: 4.6, image: "Product-images/DYSON V8 ABSOLUTE VACUUM CLEANER.svg", badge: "New", description: "Innovative design meets superior performance." },
+    { id: 55, name: "ASUS ROG ALLY X 1TB", category: "ROG", price: 3399, originalPrice: 3499, rating: 4.7, image: "Product-images/ASUS ROG ALLY X 1TB.svg", badge: "Top Rated", description: "A reliable and stylish choice for everyday use." },
+    { id: 56, name: "XBOX WIRELESS HEADPHONE", category: "XBOX", price: 545, originalPrice: 595, rating: 4.8, image: "Product-images/XBOX WIRELESS HEADPHONE.svg", badge: "Sale", description: "Experience cutting-edge performance with this product." },
+    { id: 57, name: "DJI MAVIC 3 PRO DJI RC", category: "DJI", price: 7900, originalPrice: 8195, rating: 4.9, image: "Product-images/DJI MAVIC 3 PRO DJI RC.svg", badge: "Premium", description: "Designed for efficiency and reliability." },
+    { id: 20, name: "PS-5 CONTROLLER", category: "SONY", price: 289.00, originalPrice: 349, rating: 4.6, image: "Product-images/PS-5 CONTROLLER.svg", badge: "Top Rated", description: "A reliable and stylish choice for everyday use." }
+];
+
+// Shuffle the products array using Fisher–Yates algorithm
+for (let i = products.length - 1; i > 0; i--) {
+  const j = Math.floor(Math.random() * (i + 1));
+  [products[i], products[j]] = [products[j], products[i]];
+}
+
+console.log(products);
+
+      // Filter & sort state
+      let filteredCategory = "All";
+      let searchQuery = "";
+      let selectedPriceRange = "";
+      let sortOption = "";
+
+      function renderProducts(productList) {
+  const productGrid = document.getElementById("productGrid");
+  productGrid.innerHTML = productList
+    .map(product => {
+      const whatsappLink = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent("I'm interested in " + product.name)}`;
+      let stars = "";
+      for (let i = 0; i < Math.floor(product.rating); i++) {
+        stars += '<i class="ri-star-fill text-yellow-400"></i>';
+      }
+      if (product.rating % 1 !== 0) {
+        stars += '<i class="ri-star-half-fill text-yellow-400"></i>';
+      }
+      return `
+        <div class="product-card bg-white rounded-lg shadow-sm overflow-hidden cursor-pointer" data-id="${product.id}" data-aos="fade-up" data-aos-delay="${product.id * 100}">
+          <div class="relative">
+            <img src="${product.image}" alt="${product.name}" class="w-full h-64 object-cover" loading="lazy" />
+            ${product.badge ? `<span class="absolute top-2 left-2 px-2 py-1 bg-primary text-white text-xs rounded-full badge-pulse">${product.badge}</span>` : ""}
+            <div class="absolute bottom-2 left-2 flex space-x-2">
+              <button onclick="openQuickView(event, ${product.id})" class="px-3 py-1 bg-white text-sm rounded-button shadow hover:bg-primary hover:text-white transition-colors">Quick View</button>
+            </div>
+            <a href="${whatsappLink}" target="_blank" class="absolute bottom-2 right-2 bg-white p-2 rounded-full shadow hover:bg-primary hover:text-white transition-colors">
+              <i class="ri-whatsapp-line text-xl"></i>
+            </a>
+          </div>
+          <div class="p-4">
+            <div class="text-sm text-gray-500 mb-1">${product.category}</div>
+            <h3 class="font-semibold text-lg mb-2">${product.name}</h3>
+            <div class="flex items-center mb-2">
+              ${stars}
+              <span class="ml-1 text-sm text-gray-500">(${product.rating})</span>
+            </div>
+            <div class="flex items-center space-x-2">
+              <span class="text-lg font-semibold text-primary">AED ${product.price}</span>
+              ${product.originalPrice ? `<span class="text-sm text-gray-400 line-through">AED ${product.originalPrice}</span>` : ""}
+            </div>
+          </div>
+        </div>
+      `;
+    })
+    .join("");
+  AOS.refresh();
+}
+
+      function applyFilters() {
+        let filteredProducts = products.filter(product => {
+          if (searchQuery && !product.name.toLowerCase().includes(searchQuery.toLowerCase())) return false;
+          if (filteredCategory !== "All" && product.category !== filteredCategory) return false;
+          return true;
+        });
+
+        if (selectedPriceRange) {
+  filteredProducts = filteredProducts.filter(product => {
+    if (selectedPriceRange === "under500" && product.price < 500) return true;
+    if (selectedPriceRange === "500to2000" && product.price >= 500 && product.price <= 2000) return true;
+    if (selectedPriceRange === "2000to5000" && product.price > 2000 && product.price <= 5000) return true;
+    if (selectedPriceRange === "over5000" && product.price > 5000) return true;
+    return false;
+  });
+}
+
+        if (sortOption === "priceAsc") {
+          filteredProducts.sort((a, b) => a.price - b.price);
+        } else if (sortOption === "priceDesc") {
+          filteredProducts.sort((a, b) => b.price - a.price);
+        } else if (sortOption === "rating") {
+          filteredProducts.sort((a, b) => b.rating - a.rating);
+        }
+        renderProducts(filteredProducts);
+      }
+
+      // Quick View Modal Functions
+      function openQuickView(event, productId) {
+  event.stopPropagation();
+  const product = products.find(p => p.id === productId);
+  if (!product) return;
+  document.getElementById("modalImage").src = product.image;
+  document.getElementById("modalName").textContent = product.name;
+  let modalStars = "";
+  for (let i = 0; i < Math.floor(product.rating); i++) {
+    modalStars += '<i class="ri-star-fill text-yellow-400"></i>';
+  }
+  if (product.rating % 1 !== 0) {
+    modalStars += '<i class="ri-star-half-fill text-yellow-400"></i>';
+  }
+  document.getElementById("modalRating").innerHTML = modalStars + `<span class="ml-1 text-sm text-gray-500">(${product.rating})</span>`;
+  document.getElementById("modalPrice").textContent = `AED ${product.price}`;
+  document.getElementById("modalDescription").textContent = product.description || "No description available.";
+  document.getElementById("modalWhatsApp").href = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent("I'm interested in " + product.name)}`;
+  document.getElementById("quickViewModal").classList.remove("hidden");
+}
+
+      function closeQuickView() {
+        document.getElementById("quickViewModal").classList.add("hidden");
+      }
+
+      // Event Listeners
+      document.getElementById("searchInput").addEventListener("keyup", e => {
+        searchQuery = e.target.value;
+        applyFilters();
+      });
+
+      document.getElementById("priceRangeSelect").addEventListener("change", e => {
+        selectedPriceRange = e.target.value;
+        applyFilters();
+      });
+
+      document.getElementById("sortSelect").addEventListener("change", e => {
+        sortOption = e.target.value;
+        applyFilters();
+      });
+
+      document.querySelectorAll(".category-filter, .category-slider").forEach(link => {
+        link.addEventListener("click", e => {
+          e.preventDefault();
+          filteredCategory = e.target.getAttribute("data-category");
+          applyFilters();
+        });
+      });
+
+      document.getElementById("hamburger").addEventListener("click", () => {
+        const mobileMenu = document.getElementById("mobileMenu");
+        if (mobileMenu.style.maxHeight && mobileMenu.style.maxHeight !== "0px") {
+          mobileMenu.style.maxHeight = "0px";
+        } else {
+          mobileMenu.style.maxHeight = mobileMenu.scrollHeight + "px";
+        }
+      });
+
+      function showToast(message) {
+        const toast = document.getElementById("toast");
+        document.getElementById("toastMessage").textContent = message;
+        toast.classList.remove("hidden");
+        setTimeout(() => {
+          toast.classList.add("hidden");
+        }, 3000);
+      }
+
+      function showModal() {
+        document.getElementById("newsletterModal").classList.remove("hidden");
+      }
+
+      function closeModal() {
+        document.getElementById("newsletterModal").classList.add("hidden");
+      }
+
+      document.getElementById("newsletterForm").addEventListener("submit", e => {
+        e.preventDefault();
+        showToast("Thank you for subscribing!");
+        closeModal();
+      });
+
+      setTimeout(showModal, 5000);
+
+      // Initial render
+      renderProducts(products);
+
+      // Initialize AOS and Scroll Effects
+      AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true, // Animate only once on scroll
+      });
+
+      // Custom Scroll Fade Effect
+      const fadeElements = document.querySelectorAll('.fade-on-scroll');
+      window.addEventListener('scroll', () => {
+        fadeElements.forEach(el => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight - 100) {
+            el.classList.add('visible');
+          }
+        });
+      });
+    </script>
+
+    <!-- Personalization -->
+<script>
+    // Example of personalized recommendations
+    function showPersonalizedRecommendations() {
+      // Logic to display personalized recommendations based on user behavior
+    }
+    showPersonalizedRecommendations();
+  </script>
+
+  <!--Featured deal-->
+  <script>
+    // Countdown Timer Function
+    function startCountdown(duration, display) {
+      let timer = duration, hours, minutes, seconds;
+      const interval = setInterval(function () {
+        hours = Math.floor(timer / 3600);
+        minutes = Math.floor((timer % 3600) / 60);
+        seconds = timer % 60;
+  
+        hours = hours < 10 ? "0" + hours : hours;
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+  
+        display.textContent = hours + ":" + minutes + ":" + seconds;
+  
+        if (--timer < 0) {
+          clearInterval(interval);
+          display.textContent = "Deal Expired";
+        }
+      }, 1000);
+    }
+  
+    // Initialize Countdown Timers
+    window.onload = function () {
+      startCountdown(86400, document.getElementById("countdown1")); // 24 hours in seconds
+      startCountdown(43200, document.getElementById("countdown2")); // 12 hours in seconds
+      startCountdown(21600, document.getElementById("countdown3")); // 6 hours in seconds
+    };
+  </script>
+
+  <!-- Content Security Policy -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com;">
+
+
+<!--Skeleton effects-->
+
+<style>
+  /* Existing styles remain unchanged */
+  /* ... */
+
+  /* Skeleton Styles */
+  .skeleton {
+    position: relative;
+    overflow: hidden;
+    background: #e0e0e0;
+    border-radius: 4px;
+  }
+  .skeleton::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    animation: shimmer 1.5s infinite;
+  }
+  @keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+  .skeleton-image {
+    height: 256px;
+    width: 100%;
+  }
+  .skeleton-text {
+    height: 16px;
+    margin-bottom: 8px;
+  }
+  .skeleton-button {
+    height: 32px;
+    border-radius: 8px;
+  }
+</style>
+
+<script>
+  // Existing code up to product array and shuffle
+  // ...
+
+  // Add Skeleton Function
+  function renderSkeletonCards(count = 8) {
+    const skeletonHTML = Array(count)
+      .fill('')
+      .map(() => `
+        <div class="product-card bg-white rounded-lg shadow-sm overflow-hidden">
+          <div class="relative">
+            <div class="skeleton skeleton-image"></div>
+            <div class="absolute bottom-2 left-2 flex space-x-2">
+              <div class="skeleton skeleton-button w-20"></div>
+            </div>
+          </div>
+          <div class="p-4">
+            <div class="skeleton skeleton-text w-24"></div>
+            <div class="skeleton skeleton-text w-32"></div>
+            <div class="flex items-center mb-2">
+              <div class="skeleton skeleton-text w-20"></div>
+            </div>
+            <div class="skeleton skeleton-text w-16"></div>
+          </div>
+        </div>
+      `)
+      .join('');
+    document.getElementById("productGrid").innerHTML = skeletonHTML;
+  }
+
+  // Existing renderProducts, applyFilters, and other functions
+  // ...
+
+  // Replace initial render
+  // Initial render with skeleton
+  renderSkeletonCards();
+  setTimeout(() => {
+    applyFilters(); // Use applyFilters to maintain filter/sort state
+  }, 2000);
+
+  // Existing AOS initialization and other scripts
+  AOS.init({
+    duration: 800,
+    easing: 'ease-in-out',
+    once: true,
+  });
+  // ...
+</script>
+
+
+
+  </body>
+</html>
